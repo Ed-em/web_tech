@@ -8,7 +8,7 @@ cgi.out("type" => "text/html", "charset" => "UTF-8") {
   #Return response in HTML
   "<html>
     <body>
-      <p>The size of bitter gourd and the information of the person who sold it are as follows</p>
+      <p>The information of the person who sold it are as follows</p>
       string：#{get}
     </body>
   </html>"

@@ -7,9 +7,16 @@
     <% require 'pg' %>
     <% connection = PG::connect(dbname: "goya") %>
     <% connection.internal_encoding = "UTF-8" %>
+    <% result = connection.exec("select weight, give_for, quality from crops where quality not in ('true');") %>
+    <% data = [] %>
+    <% result.each do |record| %>
+      <%  data << "Goya size：#{record["weight"]}　Sold by：#{record["give_for"]} Quality: #{record["quality"]}" %>
+    <% end %>
     <form action="indicate.cgi" method="POST">
-       Please enter the characters below<br><br>
-      <input type="text"  name="input" ><br>
+       Press the button below to jump to the information page of the size of bitter gourd and the person who sold it.<br><br>
+       <!-- valueには、送りたいデータを代入する -->
+       <!-- name="goya"を、情報の目印とする -->
+      <input type="text" name="input" value="<%= data.join(' ') %>">
       <input type="submit" name="send" >
     </form>
     <% result = connection.exec("select weight, give_for from crops where give_for not in ('自家消費');") %>

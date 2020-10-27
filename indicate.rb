@@ -9,8 +9,8 @@ cgi.out("type" => "text/html", "charset" => "UTF-8") {
   #Return response in HTML
   "<html>
     <body>
-      <p>The received character string is as follows</p>
-      <p>string：#{get}</p>
+      <p>The information of poor quality goya is as follows</p>
+      string：#{get}
     </body>
   </html>"
 }
